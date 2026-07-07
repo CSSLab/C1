@@ -134,25 +134,6 @@ python -u code/full_eval.py \
     --test_data_path data/test.parquet --tensor_parallel_size 8 --max_model_len 4096
 ```
 
-## Repo layout
-
-```
-code/
-  0_data_selection.py     # puzzle selection (theme-balanced)
-  1_cot_generation.py     # CoT distillation from google/gemini-3-flash-preview (OpenRouter)
-  2_format_matching.py    # → alpaca json + verl parquet + dataset_info.json
-  chess_reward_function.py# binary reward: FINAL_ANSWER exact-match UCI (RL + eval)
-  full_eval.py            # offline eval of any full HF model dir (greedy pass@1)
-  utils.py
-configs/
-  sft.yaml                # the SFT recipe
-scripts/
-  setup_c1_sft.sh / setup_c1_rl.sh   # environment builds
-  sft.sh                  # SFT launcher (activates c1_sft, wandb env)
-  rl.sh                   # DAPO-C1 launcher (recipe baked in)
-data/                     # train/test artifacts
-```
-
 ## Citation
 
 ```bibtex
